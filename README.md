@@ -72,7 +72,3 @@ Feel free to report any issue to this github repository.
 ## License
 
 Apache License 2.0
-
-[^1]: Sensirion High-Level Data Link Control.
-[^2]: Master Out Slave In. Frame diraction from master to slave.
-[^3]: Master In Slave Out. Frame direction from slave to master.
