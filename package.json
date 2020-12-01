@@ -1,0 +1,47 @@
+{
+  "name": "node-red-contrib-sensirion-sps30",
+  "version": "0.0.1",
+  "description": "Node-RED node for SENSIRION SPS30 control",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/inventit/node-red-contrib-sensirion-sps30.git"
+  },
+  "main": "index.js",
+  "node-red": {
+    "nodes": {
+      "SPS30 In": "dist/nodes/sps30-in.js",
+      "SPS30 Out": "dist/nodes/sps30-out.js"
+    }
+  },
+  "scripts": {
+    "build": "mkdir -p dist/nodes/ && cp -a src/nodes/*.html dist/nodes/ && tsc",
+    "lint:eslint": "eslint --fix -c .eslintrc.json --ext .ts src/",
+    "lint:markdownlint": "node ./node_modules/markdownlint-cli/markdownlint.js **/*.md --ignore node_modules",
+    "lint": "npm run lint:eslint && npm run lint:markdownlint",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "node-red",
+    "SPS30"
+  ],
+  "author": "Satoshi Hasegawa",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/inventit/node-red-contrib-sensirion-sps30/issues"
+  },
+  "devDependencies": {
+    "@types/node-red": "^0.20.0",
+    "node-red": "^1.2.6",
+    "eslint": "^7.4.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-notice": "^0.9.10",
+    "markdownlint-cli": "^0.21.0",
+    "prettier": "^1.19.1",
+    "typescript": "^4.1.2"
+  },
+  "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.8.2",
+    "@typescript-eslint/parser": "^4.8.2"
+  }
+}

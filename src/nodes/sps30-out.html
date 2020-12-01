@@ -1,0 +1,56 @@
+<script type="text/javascript">
+  RED.nodes.registerType('SPS30 Out', {
+    category: 'SENSIRION',
+    color: '#66cc33',
+    defaults: {
+      name: { value: "" }
+    },
+    inputs: 1,
+    outputs: 1,
+    icon: "font-awesome/fa-thermometer-full",
+    label: function () {
+      return this.name || "SPS30 Out";
+    }
+  });
+</script>
+
+<script type="text/html" data-template-name="SPS30 Out">
+  <div class="form-row">
+    <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+    <input type="text" id="node-input-name" placeholder="Name">
+  </div>
+</script>
+
+<script type="text/html" data-help-name="SPS30 Out">
+  <p>This node is a helper node to control SENSIRION SPS30, a particulate matter sensor. It translates SHDLC command into MSOI Frame for SPS30.</p>
+  <p>This node expects to use <code>node-red-node-serialport</code> to send data via a serial port. This node has no feature to control a serial port directly.</p>
+  <h3>Serial port settings</h3>
+  <ul>
+    <li><code>Baudrate</code>: 115200</li>
+    <li><code>Data bits</code>: 8</li>
+    <li><code>Parity</code>: None</li>
+    <li><code>Stop bits</code>: 8</li>
+    <li><code>DTR</code>: auto</li>
+    <li><code>RTS</code>: auto</li>
+    <li><code>CTS</code>: auto</li>
+    <li><code>DSR</code>: auto</li>
+    <li><code>Split input</code>: after a silence of 100 ms</li>
+    <li><code>Delivery type</code>: binary buffers</li>
+    <li><code>Default response timeout</code>: 10000 ms (leave default)</li>
+  </ul>
+  <h3>Input</h3>
+  <p>Set <code>msg.payload.command</code> to the command to be executed.</p>
+  <p>The following commands are supported as of now.</p>
+  <ul>
+    <li><code>StartMeasurement</code></li>
+    <ul>
+      <li>If you want to read values with float IEEE754, set <code>msg.payload.readValueWithIEEE754</code> to <code>true</code>.</li>
+    </ul>
+    <li><code>StopMeasurement</code></li>
+    <li><code>ReadMeasuredValue</code></li>
+    <li><code>ReadVersion</code></li>
+    <li><code>Reset</code></li>
+  </ul>
+  <h3>Output</h3>
+  <p>none</p>
+</script>

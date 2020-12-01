@@ -1,0 +1,63 @@
+<script type="text/javascript">
+  RED.nodes.registerType('SPS30 In', {
+    category: 'SENSIRION',
+    color: '#66cc33',
+    defaults: {
+      name: { value: "" },
+      debug: { value: false }
+    },
+    inputs: 1,
+    outputs: 1,
+    icon: "font-awesome/fa-thermometer-full",
+    label: function () {
+      return this.name || "SPS30 In";
+    }
+  });
+</script>
+
+<script type="text/html" data-template-name="SPS30 In">
+  <div class="form-row">
+    <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+    <input type="text" id="node-input-name" placeholder="Name">
+  </div>
+  <div class="form-row">
+    <label for="node-input-debug"><i class="icon-font"></i> Debug</label>
+    <input type="checkbox" id="node-input-debug" placeholder="Debug">
+  </div>
+</script>
+
+<script type="text/html" data-help-name="SPS30 In">
+  <p>This node is a helper node to control SENSIRION SPS30, a particulate matter sensor. It translates MISO Frame from SENSIRION SPS30 to human readable object.</p>
+  <p>This node expects to use <code>node-red-node-serialport</code> to receive data via a serial port. This node has no feature to control a serial port directly.</p>
+  <h3>Serial port settings</h3>
+  <ul>
+    <li><code>Baudrate</code>: 115200</li>
+    <li><code>Data bits</code>: 8</li>
+    <li><code>Parity</code>: None</li>
+    <li><code>Stop bits</code>: 8</li>
+    <li><code>DTR</code>: auto</li>
+    <li><code>RTS</code>: auto</li>
+    <li><code>CTS</code>: auto</li>
+    <li><code>DSR</code>: auto</li>
+    <li><code>Split input</code>: after a silence of 100 ms</li>
+    <li><code>Delivery type</code>: binary buffers</li>
+    <li><code>Default response timeout</code>: 10000 ms (leave default)</li>
+  </ul>
+  <h3>Input</h3>
+  <p>Out from <code>srial in</code> or <code>srial response</code> in <code>node-red-node-serialport</code>.
+  <h3>Output</h3>
+  <p><code>msg.payload<code> has the follwing prorperites.</p>
+  <ul>
+    <li><code>cmd</code>: Command code has been executed</li>
+    <li><code>command</code>: Command name has been executed</li>
+    <li><code>error</code>: Execution error code</li>
+    <li><code>message</code>: Meaning of error code</li>
+    <li><code>values</code>: Result of executed command</li>
+    <li><code>rx_data</code>: Raw data of MISO Frame</li>
+    <li><code>timestamp</code>: Unix time with milliseconds</li>
+  </ul>
+  <h3>Properties</h3>
+  <ul>
+    <li><code>debug</code>: If it is set to true, the node stores a byte-stream of MOSI Frame to <code>msg.tx_data</code>.</li>
+  </ul>
+</script>
