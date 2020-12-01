@@ -8,10 +8,14 @@ SPS30 supports both I2C interface and UART interface, but these nodes support
 only UART interface. Also, these nodes have no feature to control a serial
 port directly. Using `node-red-node-serialport` is expected.
 
-SPS30 uses SHDLC [^1] protocol. It is a serial communication protocol based
+SPS30 uses SHDLC (*1) protocol. It is a serial communication protocol based
 on a master/slave architecture. SPS30 acts as the slave device.
-`SPS30 Out` node translates SHDLC command to MOSI [^2] Frame. And `SPS30 In`
-node translates MISO [^3] Frame to a human-readable object.
+`SPS30 Out` node translates SHDLC command to MOSI (*2) Frame. And `SPS30 In`
+node translates MISO (*3) Frame to a human-readable object.
+
+* (*1) Sensirion High-Level Data Link Control.
+* (*2) Master Out Slave In. Frame diraction from master to slave.
+* (*3) Master In Slave Out. Frame direction from slave to master.
 
 ### Serial port settings
 
